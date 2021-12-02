@@ -14,14 +14,18 @@ Controller-->service接口-->serviceImpl-->dao接口-->daoImpl-->mapper-->db
 4. 建立service类，处理业务逻辑
 5. 在controller类中展示处理的结果
 
-### 增删改查
+### RESTfull 接口设计原则
 
+接口设计原则：请求 = 动词 + 宾语  
+增删改查：
 - 增：`POST`
 - 删：`DELETE`
 - 改：`PUT`
 - 查：`GET`
 
-### 动态SQL
+### Mybatis 动态SQL编写
+
+> 需求：更新部分用户的数据，前端没有提供某些参数时，不更新数据库中表的字段。
 
 要在带注解的映射器接口类中使用动态 SQL，可以使用 script 元素。比如:
 ```java

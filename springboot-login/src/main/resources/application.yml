@@ -1,6 +1,11 @@
+# springboot application.tml 配置文件
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://127.0.0.1:3306/crud?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8
     username: root
     password: '0316'
+# mybatis日志
+mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

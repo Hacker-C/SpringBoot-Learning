@@ -20,6 +20,7 @@ public class UserController {
         this.userService = userService;
     }
 
+    // Post: 添加数据
     @PostMapping
     public String addUser(@RequestBody User user) {
         // 默认密码
@@ -29,6 +30,7 @@ public class UserController {
         return userService.addUser(user);
     }
 
+    // GET: 分页查询
     @GetMapping
     public Page<User> findByPage(@RequestParam(defaultValue = "1") Integer pageNum,
                                  @RequestParam(defaultValue = "10") Integer pageSize,
@@ -42,6 +44,18 @@ public class UserController {
         page.setPageNum(pageNum);
         page.setPageSize(pageSize);
         return page;
+    }
+
+    // PUT: 更新数据
+    @PutMapping
+    public int updateUserById(@RequestBody User user) {
+        return userService.updateUserById(user);
+    }
+
+    // delete：删除数据
+    @DeleteMapping("/{id}")
+    public int deleteUserById(@PathVariable("id") int id) {
+        return userService.deleteUserById(id);
     }
 
 }

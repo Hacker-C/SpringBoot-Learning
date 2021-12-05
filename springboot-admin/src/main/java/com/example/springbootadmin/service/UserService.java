@@ -28,4 +28,14 @@ public class UserService {
         return userMapper.countUser();
     }
 
+    public int updateUserById(User user) {
+        userMapper.update(user);
+        return 0;
+    }
+
+    public int deleteUserById(int id) {
+        userMapper.delete(id);
+        return 0;
+    }
+
 }

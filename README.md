@@ -17,6 +17,47 @@ Controller-->service接口-->serviceImpl-->dao接口-->daoImpl-->mapper-->db
 4. 建立service类，处理业务逻辑
 5. 在controller类中展示处理的结果
 
+
+### springboot application.yml 配置文件
+
+```yml
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/crud?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8
+    username: root
+    password: '0316'
+```
+
+### Spring boot 启动类配置
+
+```java
+@SpringBootApplication
+// 把Mapper里的东西注入到Spring里面
+// 添加扫描路径，告知接口在什么地方
+@MapperScan("top/mphy/blog/springbootapi/mapper")
+public class SpringbootAdminApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(SpringbootAdminApplication.class, args);
+    }
+}
+```
+
+
+### springboot 设置允许跨域请求
+
+`http://localhost:8081` 为允许跨域请求的客户端URL。
+
+```java
+@CrossOrigin(origins = "http://localhost:8081", maxAge = 3600)
+@RestController
+@RequestMapping("/login")
+public class UserController {
+    // 后端业务代码
+}
+```
+
 ### RESTfull 接口设计原则
 
 接口设计原则：请求 = 动词 + 宾语  
@@ -47,34 +88,10 @@ Controller-->service接口-->serviceImpl-->dao接口-->daoImpl-->mapper-->db
 void updateAuthorValues(Author author);
 ```
 
-### springboot application.yml 配置文件
-
-```yml
-spring:
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/crud?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8
-    username: root
-    password: '0316'
-```
-
 ### mybatis 控制台打印日志
 
 ```yml
 mybatis:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-```
-
-### springboot 设置允许跨域请求
-
-`http://localhost:8081` 为允许跨域请求的客户端URL。
-
-```java
-@CrossOrigin(origins = "http://localhost:8081", maxAge = 3600)
-@RestController
-@RequestMapping("/login")
-public class UserController {
-    // 后端业务代码
-}
 ```

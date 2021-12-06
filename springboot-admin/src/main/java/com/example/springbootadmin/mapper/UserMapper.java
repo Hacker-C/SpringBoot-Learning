@@ -27,4 +27,12 @@ public interface UserMapper {
     // 删除数据
     @Delete("delete from user where id=#{id}")
     void delete(int id);
+
+    // 登录查询
+    @Select("select * from user where username=#{username} and password=#{password}")
+    User login(@Param("username") String username, @Param("password") String password);
+
+    // 根据用户名查询是否存在这个用户
+    @Select("select * from user where username=#{username}")
+    User find(String username);
 }

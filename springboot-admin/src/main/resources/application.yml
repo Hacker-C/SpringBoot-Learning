@@ -2,6 +2,8 @@
 spring:
   application:
     name: springboot-admin
+  profiles:
+    active: dev
   datasource:
     # 数据库驱动
     driver-class-name: com.mysql.cj.jdbc.Driver

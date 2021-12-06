@@ -15,9 +15,9 @@ public class UserService {
         this.userMapper = userMapper;
     }
 
-    public String addUser(User user) {
+    public int addUser(User user) {
         userMapper.save(user);
-        return "ok";
+        return 0;
     }
 
     public List<User> findByPage(@Param("offset") int offset, @Param("pageSize") int pageSize, @Param("key") String key) {
@@ -36,6 +36,14 @@ public class UserService {
     public int deleteUserById(int id) {
         userMapper.delete(id);
         return 0;
+    }
+
+    public User login(@Param("username") String username, @Param("password") String password) {
+        return userMapper.login(username, password);
+    }
+
+    public User find(String name) {
+        return  userMapper.find(name);
     }
 
 }
